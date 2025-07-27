@@ -1,0 +1,67 @@
+{
+    "name": "NyanCat",
+    "uuid": "com.eniac.nyancat",
+    "version": "1.0.0",
+    "author": "eniac",
+    "entry": "backend/plugin.cjs",
+    "description": "A NyanCat!",
+    "repo": "",
+    "sdk": {
+        "version": "1.0.0"
+    },
+    "software": {
+        "minimumVersion": "1.0.0"
+    },
+    "os": [
+        {
+            "platform": "mac",
+            "minimumVersion": "10.15"
+        },
+        {
+            "platform": "windows",
+            "minimumVersion": "10"
+        }
+    ],
+    "device": [
+        {
+            "name": "flexbar",
+            "version": "1.0.0"
+        }
+    ],
+    "configPage": "",
+    "keyLibrary": {
+        "title": "$PluginName",
+        "style": {
+            "icon": "mdi mdi-cat"
+        },
+        "children": [
+            {
+                "title": "$NyanCat.Title",
+                "tip": "$NyanCat.Tip",
+                "cid": "com.eniac.nyancat.nyancat",
+                "config": {
+                    "keyType": "directDraw",
+                    "platform": [
+                        "windows",
+                        "mac"
+                    ]
+                },
+                "style": {
+                    "icon": "mdi mdi-cat",
+                    "width": 240
+                },
+                "data": {
+                }
+            }
+        ]
+    },
+    "local": {
+        "en": {
+            "PluginName": "NyanCat",
+            "NyanCat": {
+                "Title": "NyanCat",
+                "Tip": "NyanCat"
+            }
+        }
+    }
+}
