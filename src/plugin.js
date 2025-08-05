@@ -59,9 +59,9 @@ plugin.on('plugin.alive', (payload) => {
       keyData[key.uid] = key
       if (key.cid === 'com.eniac.nyancat.nyancat') {
         let nyancatIndex = 0
-        nyancatInterval = setInterval(() => {
+        nyancatInterval = setInterval(async () => {
           try {
-            plugin.directDraw(payload.serialNumber, key, nyancats[nyancatIndex])
+            await plugin.directDraw(payload.serialNumber, key, nyancats[nyancatIndex], true)
           } catch (error) {
             logger.error('Error drawing nyancat:', error)
             clearInterval(nyancatInterval)
@@ -71,7 +71,7 @@ plugin.on('plugin.alive', (payload) => {
           if (nyancatIndex >= nyancats.length) {
             nyancatIndex = 0
           }
-        }, 30)
+        }, 80)
       }
     }
 })
