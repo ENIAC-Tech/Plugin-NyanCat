@@ -41,7 +41,13 @@ loadPngImages()
  * ]
  */
 plugin.on('device.status', (devices) => {
-    logger.info('Device status changed:', devices)        
+    logger.info('Device status changed:', devices)
+    for (let device of devices) {
+      if (device.status === 'disconnected') {
+        clearInterval(nyancatInterval)
+        nyancatInterval = null
+      }
+    }
 })
 
 
@@ -55,6 +61,7 @@ plugin.on('device.status', (devices) => {
  */
 plugin.on('plugin.alive', (payload) => {
     logger.info('Plugin alive:', payload)
+    let hasNyancat = false
     for (let key of payload.keys) {
       keyData[key.uid] = key
       if (key.cid === 'com.eniac.nyancat.nyancat') {
@@ -72,7 +79,12 @@ plugin.on('plugin.alive', (payload) => {
             nyancatIndex = 0
           }
         }, 80)
+        hasNyancat = true
       }
+    }
+    if (!hasNyancat) {
+      clearInterval(nyancatInterval)
+      nyancatInterval = null
     }
 })
 
