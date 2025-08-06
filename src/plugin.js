@@ -61,7 +61,7 @@ plugin.on('plugin.alive', (payload) => {
         let nyancatIndex = 0
         nyancatInterval = setInterval(async () => {
           try {
-            await plugin.directDraw(payload.serialNumber, key, nyancats[nyancatIndex], true)
+            await plugin.directDraw(payload.serialNumber, key, nyancats[nyancatIndex])
           } catch (error) {
             logger.error('Error drawing nyancat:', error)
             clearInterval(nyancatInterval)
